@@ -8,12 +8,12 @@ pipeline {
         }
         stage('building Image') {    
             steps {
-               sh 'docker build -t html-server-image:v1 .'
+               sh 'docker build -t shazebali7/nginx:v1 .'
             }
         }
         stage('pushing image to hub') { 
             steps {
-               sh ' docker  login --username  shazebali7 --password "Shazeb@li7" && docker push html-server-image:v1 ' 
+               sh ' docker  login --username  shazebali7 --password "Shazeb@li7" && docker push shazebali7/nginx ' 
             }
         }
         stage('Deploying changes') { 
