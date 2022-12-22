@@ -8,12 +8,12 @@ pipeline {
         }
         stage('building Image') {    
             steps {
-               sh 'docker build --no-cache -t shazebali7/php:v1 .'
+               sh 'docker build -t html-server-image:v1 .'
             }
         }
         stage('pushing image to hub') { 
             steps {
-               sh ' docker  login --username  shazebali7 --password "Shazeb@li7" && docker push shazebali7/php:v1 ' 
+               sh ' docker  login --username  shazebali7 --password "Shazeb@li7" && docker push html-server-image:v1 ' 
             }
         }
         stage('Deploying changes') { 
