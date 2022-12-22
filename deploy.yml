@@ -1,34 +1,19 @@
 apiVersion: apps/v1
-kind: Deployment
+kind: Deployment 
 metadata:
-  name: test-springboot
+  name: nginx-deployment
 spec:
-  replicas: 2
   selector:
     matchLabels:
-      app: test-springboot
+      app: nginx
+  replicas: 2
   template:
     metadata:
       labels:
-        app: test-springboot
-    spec:
-      containers:
-        - name: springboot
-          image: shazebali7/php:v1
-          ports:
-            - containerPort: 8000
-          env:
-            - name: PORT
-              value: "8000"
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: test-springboot
-spec:
-  type: LoadBalancer
-  ports:
-    - port: 80
-      targetPort: 8000
-  selector:
-    app: test-springboot
+         app: nginx
+     spec:
+         containers: 
+         - name: nginx 
+           image: nginx:1.14.2 
+           ports:
+           - containerPort: 80
